@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Limberger_Schokofabrik"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:SchokoVerwaltungDataSet x:Key="schokoVerwaltungDataSet"/>
+        <CollectionViewSource x:Key="schokosortenViewSource" Source="{Binding Schokosorten, Source={StaticResource schokoVerwaltungDataSet}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource schokosortenViewSource}">
+        <DataGrid x:Name="schokosortenDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="342,96,50,123" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="schokosorteColumn" Binding="{Binding Schokosorte}" Header="Schokosorte" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="kalorienColumn" Binding="{Binding Kalorien}" Header="Kalorien" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,152,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,214,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Window>

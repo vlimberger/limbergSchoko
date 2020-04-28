@@ -24,5 +24,16 @@ namespace Limberger_Schokofabrik
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            Limberger_Schokofabrik.SchokoVerwaltungDataSet schokoVerwaltungDataSet = ((Limberger_Schokofabrik.SchokoVerwaltungDataSet)(this.FindResource("schokoVerwaltungDataSet")));
+            // Lädt Daten in Tabelle "Schokosorten". Sie können diesen Code nach Bedarf ändern.
+            Limberger_Schokofabrik.SchokoVerwaltungDataSetTableAdapters.SchokosortenTableAdapter schokoVerwaltungDataSetSchokosortenTableAdapter = new Limberger_Schokofabrik.SchokoVerwaltungDataSetTableAdapters.SchokosortenTableAdapter();
+            schokoVerwaltungDataSetSchokosortenTableAdapter.Fill(schokoVerwaltungDataSet.Schokosorten);
+            System.Windows.Data.CollectionViewSource schokosortenViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("schokosortenViewSource")));
+            schokosortenViewSource.View.MoveCurrentToFirst();
+        }
     }
 }
