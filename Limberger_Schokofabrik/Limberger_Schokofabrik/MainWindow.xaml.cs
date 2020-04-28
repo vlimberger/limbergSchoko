@@ -35,5 +35,7 @@ namespace Limberger_Schokofabrik
             System.Windows.Data.CollectionViewSource schokosortenViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("schokosortenViewSource")));
             schokosortenViewSource.View.MoveCurrentToFirst();
         }
+
+    
     }
 }
